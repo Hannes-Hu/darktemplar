@@ -992,4 +992,134 @@ section {
   }
 }
 
+/* Voluntary Activities Section */
+.voluntary-section {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  margin: 2rem auto;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.activity-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.activity-title h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.activity-title h4 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.activity-period {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gradient);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.period-icon {
+  font-size: 0.8rem;
+}
+
+.activity-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.activity-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.activity-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+/* Stagger animation for activity cards */
+.activity-card:nth-child(1) { animation-delay: 0.1s; }
+.activity-card:nth-child(2) { animation-delay: 0.2s; }
+.activity-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive design for voluntary activities */
+@media (max-width: 768px) {
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .activity-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .activity-period {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-card {
+    padding: 1.5rem;
+  }
+  
+  .activity-title h3 {
+    font-size: 1.2rem;
+  }
+  
+  .activity-title h4 {
+    font-size: 1rem;
+  }
+}
+
 
