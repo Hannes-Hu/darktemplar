@@ -8,6 +8,9 @@ const Hero = () => {
     window.open('/cv.pdf', '_blank');
   };
 
+  // Get skill names for the floating card
+  const skillNames = cvData.getSkillsArray().slice(0, 8);
+
   return (
     <section id="hero" className="hero-section">
       <div className="hero-container">
@@ -42,7 +45,7 @@ const Hero = () => {
           <div className="floating-card">
             <div className="card-content">
               <div className="tech-stack">
-                {Object.values(cvData.skills).flat().slice(0, 8).map((skill, index) => (
+                {skillNames.map((skill, index) => (
                   <span key={index} className="tech-tag">{skill}</span>
                 ))}
               </div>
