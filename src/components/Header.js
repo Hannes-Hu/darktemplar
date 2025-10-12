@@ -27,7 +27,7 @@ const Header = () => {
         <li><button onClick={() => scrollToSection('about')}>About</button></li>
         <li><button onClick={() => scrollToSection('experience')}>Experience</button></li>
         <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
-        <li><button onClick={() => scrollToSection('voluntary')}>Voluntary Work</button></li> {/* Updated */}
+        <li><button onClick={() => scrollToSection('voluntary')}>Voluntary Work</button></li>
         <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
       </ul>
       </nav>
@@ -37,3 +37,4 @@ const Header = () => {
 
 
 export default Header;
+
