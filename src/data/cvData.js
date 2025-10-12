@@ -98,7 +98,7 @@ export const cvData = {
     {
       id: 2,
       organization: "FH - Social Media Projekt - #ufstudieren",
-      role: `"CEO"/Leiter der Organisation`,
+      role: `"CEO" / Leiter der Organisation`,
       period: "02.2024 - 02.2026",
       description: `• Organisationsentwicklung
       • Recruitung, Vor- ,Einstellungsgespräche und Mitarbeitergespräche
@@ -155,6 +155,7 @@ export const cvData = {
     }
   ]
 };
+
 
 
 
