@@ -1,10 +1,10 @@
-/* Modern Space Background Styles */
+/* Modern Space Background Styles - FIXED VERSION */
 .background-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 300%; /* Much taller to cover all scrolling */
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
 }
@@ -15,7 +15,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: transform 0.1s linear;
+  transition: transform 0.1s ease-out;
   filter: blur(0.5px);
 }
 
@@ -29,7 +29,7 @@
     radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.12) 0%, transparent 50%),
     radial-gradient(circle at 40% 80%, rgba(119, 198, 255, 0.15) 0%, transparent 50%),
-    linear-gradient(45deg, rgba(10, 15, 40, 0.8) 0%, rgba(30, 35, 80, 0.6) 100%);
+    linear-gradient(45deg, rgba(10, 15, 40, 0.9) 0%, rgba(30, 35, 80, 0.7) 100%);
   pointer-events: none;
 }
 
@@ -1076,3 +1076,4 @@ section {
     padding: 2rem 0 !important;
   }
 }
+
