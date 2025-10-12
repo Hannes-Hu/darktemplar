@@ -1,13 +1,13 @@
 export const cvData = {
   personal: {
-    name: "Alexander Holzbauer",
+    name: "Alex Johnson",
     title: "Senior Full Stack Developer",
-    email: "alex@email.com",
+    email: "alex.johnson@email.com",
     phone: "+1 (555) 123-4567",
-    location: "Wien, AT",
-    website: "alex.dev",
-    linkedin: "linkedin.com/in/alex",
-    github: "github.com/alex"
+    location: "San Francisco, CA",
+    website: "alexjohnson.dev",
+    linkedin: "linkedin.com/in/alexjohnson",
+    github: "github.com/alexjohnson"
   },
   about: "Passionate full-stack developer with 8+ years of experience building scalable web applications. Specialized in React, Node.js, and cloud technologies. Strong advocate for clean code and user-centered design.",
   experience: [
@@ -71,6 +71,18 @@ export const cvData = {
       { name: "Figma", percentage: 68 },
       { name: "Jira", percentage: 85 }
     ]
+  },
+  // Helper function to get skills as simple array for other components
+  getSkillsArray: function() {
+    return Object.values(this.skills).flat().map(skill => skill.name);
+  },
+  // Helper function to get skills by category as simple array
+  getSkillsByCategory: function() {
+    const simpleSkills = {};
+    Object.keys(this.skills).forEach(category => {
+      simpleSkills[category] = this.skills[category].map(skill => skill.name);
+    });
+    return simpleSkills;
   },
   projects: [
     {
