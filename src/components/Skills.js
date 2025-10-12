@@ -29,7 +29,7 @@ const Skills = () => {
     return '#ef4444'; // Red
   };
 
-  // Check if category should show skill level
+  // Check if category should show skill level and percentage
   const shouldShowSkillLevel = (category) => {
     return category === 'Languages' || category === 'IT';
   };
@@ -64,19 +64,22 @@ const Skills = () => {
                             <span className="skill-percentage">{skill.percentage}%</span>
                           </>
                         ) : (
-                          <span className="skill-percentage">{skill.percentage}%</span>
+                          // Empty div to maintain layout, but show nothing for Hobbies/Strengths
+                          <div></div>
                         )}
                       </div>
                     </div>
-                    <div className="skill-bar">
-                      <div 
-                        className="skill-progress"
-                        style={{
-                          width: `${skill.percentage}%`,
-                          backgroundColor: getLevelColor(skill.percentage)
-                        }}
-                      ></div>
-                    </div>
+                    {shouldShowSkillLevel(category) && (
+                      <div className="skill-bar">
+                        <div 
+                          className="skill-progress"
+                          style={{
+                            width: `${skill.percentage}%`,
+                            backgroundColor: getLevelColor(skill.percentage)
+                          }}
+                        ></div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
