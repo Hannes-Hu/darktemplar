@@ -1,6 +1,6 @@
 import React from 'react';
 import { cvData } from '../data/cvData';
-import { FaCalendar, FaExternalLinkAlt, FaHandsHelping } from 'react-icons/fa';
+import { FaCalendar, FaHandsHelping } from 'react-icons/fa';
 
 const VoluntaryActivities = () => {
   return (
@@ -25,20 +25,7 @@ const VoluntaryActivities = () => {
                 {activity.technologies.map((tech, index) => (
                   <span key={index} className="tech-tag">{tech}</span>
                 ))}
-              </div>
-              <div className="activity-actions">
-                {activity.link && (
-                  <a 
-                    href={activity.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="btn btn-outline"
-                  >
-                    <FaExternalLinkAlt className="btn-icon" />
-                    Learn More
-                  </a>
-                )}
-              </div>
+              </div>/}
             </div>
           ))}
         </div>
