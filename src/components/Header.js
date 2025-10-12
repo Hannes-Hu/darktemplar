@@ -23,16 +23,17 @@ const Header = () => {
         <div className="nav-logo">
           <span>{cvData.personal.name.split(' ')[0]}</span>
         </div>
-        <ul className="nav-links">
-          <li><button onClick={() => scrollToSection('about')}>About</button></li>
-          <li><button onClick={() => scrollToSection('experience')}>Experience</button></li>
-          <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
-          <li><button onClick={() => scrollToSection('projects')}>Projects</button></li>
-          <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
-        </ul>
+      <ul className="nav-links">
+        <li><button onClick={() => scrollToSection('about')}>About</button></li>
+        <li><button onClick={() => scrollToSection('experience')}>Experience</button></li>
+        <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
+        <li><button onClick={() => scrollToSection('voluntary')}>Voluntary Work</button></li> {/* Updated */}
+        <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+      </ul>
       </nav>
     </header>
   );
 };
+
 
 export default Header;
