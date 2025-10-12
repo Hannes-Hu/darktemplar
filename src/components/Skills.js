@@ -14,6 +14,22 @@ const Skills = () => {
     }
   };
 
+  const getSkillLevel = (percentage) => {
+    if (percentage >= 90) return 'Expert';
+    if (percentage >= 80) return 'Advanced';
+    if (percentage >= 70) return 'Intermediate';
+    if (percentage >= 60) return 'Beginner';
+    return 'Novice';
+  };
+
+  const getLevelColor = (percentage) => {
+    if (percentage >= 90) return '#10b981'; // Green
+    if (percentage >= 80) return '#3b82f6'; // Blue
+    if (percentage >= 70) return '#8b5cf6'; // Purple
+    if (percentage >= 60) return '#f59e0b'; // Yellow
+    return '#ef4444'; // Red
+  };
+
   return (
     <section id="skills" className="skills-section">
       <div className="container">
@@ -30,12 +46,24 @@ const Skills = () => {
               <div className="skills-list">
                 {skills.map((skill, index) => (
                   <div key={index} className="skill-item">
-                    <span className="skill-name">{skill}</span>
+                    <div className="skill-header">
+                      <span className="skill-name">{skill.name}</span>
+                      <div className="skill-info">
+                        <span 
+                          className="skill-level"
+                          style={{ color: getLevelColor(skill.percentage) }}
+                        >
+                          {getSkillLevel(skill.percentage)}
+                        </span>
+                        <span className="skill-percentage">{skill.percentage}%</span>
+                      </div>
+                    </div>
                     <div className="skill-bar">
                       <div 
                         className="skill-progress"
                         style={{
-                          width: `${Math.min(90, 70 + Math.random() * 25)}%`
+                          width: `${skill.percentage}%`,
+                          backgroundColor: getLevelColor(skill.percentage)
                         }}
                       ></div>
                     </div>
