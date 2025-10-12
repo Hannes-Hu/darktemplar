@@ -1,13 +1,13 @@
 export const cvData = {
   personal: {
-    name: "Alex Johnson",
+    name: "Alexander Holzbauer",
     title: "Senior Full Stack Developer",
-    email: "alex.johnson@email.com",
+    email: "alex@email.com",
     phone: "+1 (555) 123-4567",
     location: "San Francisco, CA",
-    website: "alexjohnson.dev",
-    linkedin: "linkedin.com/in/alexjohnson",
-    github: "github.com/alexjohnson"
+    website: "alex.dev",
+    linkedin: "linkedin.com/in/alex",
+    github: "github.com/alex"
   },
   about: "Passionate full-stack developer with 8+ years of experience building scalable web applications. Specialized in React, Node.js, and cloud technologies. Strong advocate for clean code and user-centered design.",
   experience: [
@@ -120,3 +120,4 @@ export const cvData = {
     }
   ]
 };
+
