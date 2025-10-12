@@ -1,22 +1,24 @@
 export const cvData = {
   personal: {
     name: "Alexander Holzbauer",
-    title: "Senior Full Stack Developer",
-    email: "alex@email.com",
-    phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA",
-    website: "alex.dev",
-    linkedin: "linkedin.com/in/alex",
-    github: "github.com/alex"
+    title: "TBA",
+    email: "alexander.holzbauer1@gmail.com",
+    phone: "+43 68110542959",
+    location: "Wien, AT",
+    website: "TBA",
   },
-  about: "Passionate full-stack developer with 8+ years of experience building scalable web applications. Specialized in React, Node.js, and cloud technologies. Strong advocate for clean code and user-centered design.",
+  about: "TBA",
   experience: [
     {
       id: 1,
-      company: "Tech Innovations Inc.",
-      position: "Senior Full Stack Developer",
-      period: "2020 - Present",
-      description: "Lead development of multiple SaaS products serving 50k+ users. Implemented microservices architecture reducing latency by 40%.",
+      company: "Erich Schenkel GmbH",
+      position: "Brand Manager / Projekt Manager",
+      period: "06.2023 - Present",
+      description: "• Internationale Markenentwicklung am österreichischen Markt (z.B.:
+Rummo, Kikkoman)
+• Laufende Weiterentwicklung der Kundenverkaufskanäle (Promotionen, PoS Platzierung)
+• Kommunikation, Reporting und Budgetverhandlungen mit Lieferanten
+• Leitung von diversen (internen)-Projekten (Distributorenmeetings, IT-Infrastruktur, CRM, Zeiterfassung, Office 365)",
       technologies: ["React", "Node.js", "AWS", "MongoDB", "Docker"]
     },
     {
@@ -120,4 +122,5 @@ export const cvData = {
     }
   ]
 };
+
 
