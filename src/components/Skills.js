@@ -14,10 +14,10 @@ const Skills = () => {
   };
 
   const getSkillLevel = (percentage) => {
-    if (percentage >= 90) return 'Expert';
+    if (percentage >= 90) return 'Experte';
     if (percentage >= 80) return 'Advanced';
     if (percentage >= 70) return 'Intermediate';
-    if (percentage >= 60) return 'Beginner';
+    if (percentage >= 60) return 'Grundkenntnisse';
     return 'Novice';
   };
 
@@ -90,3 +90,4 @@ const Skills = () => {
 };
 
 export default Skills;
+
