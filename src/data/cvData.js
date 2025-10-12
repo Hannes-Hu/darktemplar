@@ -2,12 +2,12 @@ export const cvData = {
   personal: {
     name: "Alexander Holzbauer",
     title: "Senior Full Stack Developer",
-    email: "alex.johnson@email.com",
+    email: "alex@email.com",
     phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA",
-    website: "alexjohnson.dev",
-    linkedin: "linkedin.com/in/alexjohnson",
-    github: "github.com/alexjohnson"
+    location: "Wien, AT",
+    website: "alex.dev",
+    linkedin: "linkedin.com/in/alex",
+    github: "github.com/alex"
   },
   about: "Passionate full-stack developer with 8+ years of experience building scalable web applications. Specialized in React, Node.js, and cloud technologies. Strong advocate for clean code and user-centered design.",
   experience: [
@@ -37,11 +37,40 @@ export const cvData = {
     }
   ],
   skills: {
-    "Frontend": ["React", "Vue.js", "TypeScript", "Next.js", "Tailwind CSS"],
-    "Backend": ["Node.js", "Python", "PHP", "Express.js", "FastAPI"],
-    "Database": ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
-    "DevOps": ["AWS", "Docker", "Kubernetes", "CI/CD", "Git"],
-    "Tools": ["Git", "Webpack", "Jest", "Figma", "Jira"]
+    "Frontend": [
+      { name: "React", percentage: 90 },
+      { name: "Vue.js", percentage: 85 },
+      { name: "TypeScript", percentage: 80 },
+      { name: "Next.js", percentage: 75 },
+      { name: "Tailwind CSS", percentage: 95 }
+    ],
+    "Backend": [
+      { name: "Node.js", percentage: 88 },
+      { name: "Python", percentage: 82 },
+      { name: "PHP", percentage: 78 },
+      { name: "Express.js", percentage: 85 },
+      { name: "FastAPI", percentage: 70 }
+    ],
+    "Database": [
+      { name: "MongoDB", percentage: 85 },
+      { name: "PostgreSQL", percentage: 80 },
+      { name: "MySQL", percentage: 83 },
+      { name: "Redis", percentage: 75 }
+    ],
+    "DevOps": [
+      { name: "AWS", percentage: 78 },
+      { name: "Docker", percentage: 82 },
+      { name: "Kubernetes", percentage: 65 },
+      { name: "CI/CD", percentage: 80 },
+      { name: "Git", percentage: 95 }
+    ],
+    "Tools": [
+      { name: "Git", percentage: 95 },
+      { name: "Webpack", percentage: 72 },
+      { name: "Jest", percentage: 78 },
+      { name: "Figma", percentage: 68 },
+      { name: "Jira", percentage: 85 }
+    ]
   },
   projects: [
     {
@@ -78,5 +107,4 @@ export const cvData = {
       year: "2013"
     }
   ]
-
 };
