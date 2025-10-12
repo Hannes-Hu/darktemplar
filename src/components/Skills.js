@@ -29,9 +29,14 @@ const Skills = () => {
     return '#ef4444'; // Red
   };
 
-  // Check if category should show percentage text
-  const shouldShowPercentageText = (category) => {
+  // Check if category should show any text
+  const shouldShowText = (category) => {
     return category === 'Languages' || category === 'IT';
+  };
+
+  // Check if category is Hobbies or Strengths
+  const isSimpleCategory = (category) => {
+    return category === 'Hobbies' || category === 'Strengths';
   };
 
   return (
@@ -40,7 +45,7 @@ const Skills = () => {
         <h2>Skills</h2>
         <div className="skills-grid">
           {Object.entries(cvData.skills).map(([category, skills]) => (
-            <div key={category} className="skill-category">
+            <div key={category} className={`skill-category ${isSimpleCategory(category) ? 'simple-category' : ''}`}>
               <div className="category-header">
                 <div className="category-icon">
                   {getIcon(category)}
@@ -52,27 +57,17 @@ const Skills = () => {
                   <div key={index} className="skill-item">
                     <div className="skill-header">
                       <span className="skill-name">{skill.name}</span>
-                      <div className="skill-info">
-                        {shouldShowPercentageText(category) ? (
-                          <>
-                            <span 
-                              className="skill-level"
-                              style={{ color: getLevelColor(skill.percentage) }}
-                            >
-                              {getSkillLevel(skill.percentage)}
-                            </span>
-                            <span className="skill-percentage">{skill.percentage}%</span>
-                          </>
-                        ) : (
-                          // Show only skill level without percentage text for Hobbies/Strengths
+                      {shouldShowText(category) && (
+                        <div className="skill-info">
                           <span 
                             className="skill-level"
                             style={{ color: getLevelColor(skill.percentage) }}
                           >
                             {getSkillLevel(skill.percentage)}
                           </span>
-                        )}
-                      </div>
+                          <span className="skill-percentage">{skill.percentage}%</span>
+                        </div>
+                      )}
                     </div>
                     <div className="skill-bar">
                       <div 
