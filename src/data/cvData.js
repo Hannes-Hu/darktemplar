@@ -14,11 +14,10 @@ export const cvData = {
       company: "Erich Schenkel GmbH",
       position: "Brand Manager / Projekt Manager",
       period: "06.2023 - Present",
-      description: "- Internationale Markenentwicklung am österreichischen Markt (z.B.
-Rummo, Kikkoman)
-- Laufende Weiterentwicklung der Kundenverkaufskanäle (Promotionen, PoS Platzierung)
-- Kommunikation, Reporting und Budgetverhandlungen mit Lieferanten
-- Leitung von diversen (internen)-Projekten (Distributorenmeetings, IT-Infrastruktur, CRM, Zeiterfassung, Office 365)",
+      description: `• Internationale Markenentwicklung am österreichischen Markt (z.B.: Rummo, Kikkoman)
+• Laufende Weiterentwicklung der Kundenverkaufskanäle (Promotionen, PoS Platzierung)
+• Kommunikation, Reporting und Budgetverhandlungen mit Lieferanten
+• Leitung von diversen (internen)-Projekten (Distributorenmeetings, IT-Infrastruktur, CRM, Zeiterfassung, Office 365)`,
       technologies: ["React", "Node.js", "AWS", "MongoDB", "Docker"]
     },
     {
@@ -122,6 +121,7 @@ Rummo, Kikkoman)
     }
   ]
 };
+
 
 
 
