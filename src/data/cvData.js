@@ -1,6 +1,6 @@
 export const cvData = {
   personal: {
-    name: "Alex Johnson",
+    name: "Alexander Holzbauer",
     title: "Senior Full Stack Developer",
     email: "alex.johnson@email.com",
     phone: "+1 (555) 123-4567",
@@ -78,4 +78,5 @@ export const cvData = {
       year: "2013"
     }
   ]
+
 };
