@@ -14,7 +14,7 @@ const Background = () => {
     // Set canvas size
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = window.innerHeight * 3; 
     };
     
     resizeCanvas();
@@ -238,3 +238,4 @@ const Background = () => {
 };
 
 export default Background;
+
