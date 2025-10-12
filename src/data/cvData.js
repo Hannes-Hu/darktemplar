@@ -100,30 +100,44 @@ export const cvData = {
   voluntaryActivities: [
     {
       id: 1,
-      organization: "Open Source Community",
-      role: "Core Contributor",
-      period: "2019 - Present",
-      description: "Regular contributor to various open source projects, focusing on React ecosystem and developer tools.",
-      technologies: ["React", "TypeScript", "Open Source", "Community"],
-      link: "https://github.com/alexjohnson"
+      organization: "BYT Tournaments",
+      role: "CEO / Gründer",
+      period: "seit 01.2025",
+      description: `• Organisation und Veranstaltung von eSports Turnieren
+      • Community und Teamaufbau
+      • Gespräche und Verhandlungen mit eSportvereinen zur Kooperation`,
+      technologies: ["Bsp. Skill"]
     },
     {
       id: 2,
-      organization: "Local Tech Mentorship Program",
-      role: "Volunteer Mentor",
-      period: "2020 - 2022",
-      description: "Mentored aspiring developers from underrepresented backgrounds, providing coding guidance and career advice.",
-      technologies: ["Mentoring", "Teaching", "Career Guidance", "Workshops"],
-      link: "https://example.com/mentorship"
+      organization: "FH - Social Media Projekt - #ufstudieren",
+      role: `"CEO"/Leiter der Organisation`,
+      period: "02.2024 - 02.2026",
+      description: `• Organisationsentwicklung
+      • Recruitung, Vor- ,Einstellungsgespräche und Mitarbeitergespräche
+      • Kommunikation und Reporting an die Lektoren
+      • Laufende Abstimmung mit den Abteilungsleitern, die für das direkt operative (den Content) zuständig sind`,
+      technologies: ["Bsp. Skill"]
     },
     {
       id: 3,
-      organization: "Tech Conference Organization",
-      role: "Volunteer Coordinator",
-      period: "2021",
-      description: "Organized and coordinated volunteer activities for annual tech conference with 1000+ attendees.",
-      technologies: ["Event Planning", "Team Coordination", "Public Speaking", "Logistics"],
-      link: "https://example.com/conference"
+      organization: "Politisch engagiert",
+      role: "Organisationsreferent",
+      period: "09.2016 - 10.2021",
+      description: `• Organisieren von Kampagnen im Bezirk
+        • Leiter des Bezirkswahlkampfteams
+        • Aufbau von Ständen
+        • Koordination von Mitgliedern vor Ort`,
+      technologies: ["Bsp. Skill"]
+    },
+    {
+      id: 4,
+      organization: "eSports Mount & Blade: Warband",
+      role: "Clanleiter und Event Organisator",
+      period: "06.2014 - 04.2022",
+      description: `• Matchorganisation (auch international), Ausbildung neuer Spieler, Führung von 50 Mitgliedern
+      • Eventorganisation mit bis zu 300 Teilnehmern pro Wochenende`,
+      technologies: ["Bsp. Skill"]
     }
   ],
   education: [
@@ -139,6 +153,7 @@ export const cvData = {
     }
   ]
 };
+
 
 
 
