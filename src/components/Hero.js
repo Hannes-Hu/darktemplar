@@ -4,11 +4,10 @@ import { FaDownload, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Hero = () => {
   const handleDownloadCV = () => {
-    // This would typically download a PDF CV
     window.open('/cv.pdf', '_blank');
   };
 
-  // Get skill names for the floating card
+  // Get skill names for the floating tags
   const skillNames = cvData.getSkillsArray().slice(0, 8);
 
   return (
@@ -38,14 +37,21 @@ const Hero = () => {
           </div>
         </div>
         <div className="hero-visual">
-          <div className="floating-card">
-            <div className="card-content">
-              <div className="tech-stack">
-                {skillNames.map((skill, index) => (
-                  <span key={index} className="tech-tag">{skill}</span>
-                ))}
+          {/* Replace the floating card with floating tags */}
+          <div className="floating-tags-container">
+            {skillNames.map((skill, index) => (
+              <div 
+                key={index} 
+                className="floating-tech-tag"
+                style={{
+                  animationDelay: `${index * 0.5}s`,
+                  left: `${20 + (index % 3) * 30}%`,
+                  top: `${20 + Math.floor(index / 3) * 25}%`
+                }}
+              >
+                {skill}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -54,7 +60,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
-
-
