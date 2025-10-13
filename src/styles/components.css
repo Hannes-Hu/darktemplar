@@ -53,6 +53,15 @@ main {
   z-index: 1;
 }
 
+/* Make About section title white */
+.about-section h2 {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -1045,3 +1054,4 @@ section {
     padding: 2rem 0 !important;
   }
 }
+
