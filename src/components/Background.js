@@ -178,40 +178,35 @@ const Background = () => {
 
     const drawProminentTrendLines = (ctx, canvas, time) => {
       const scrollY = scrollYRef.current;
+      const viewportHeight = canvas.height;
       
-      // Multiple trend lines at different heights with parallax
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(74, 222, 128, 0.3)';
-      ctx.lineWidth = 3;
-      const line1Y = 200 - (scrollY * 0.3);
-      ctx.moveTo(-50, line1Y);
-      for (let x = 0; x < canvas.width + 50; x += 15) {
-        const y = line1Y - Math.sin(x * 0.008 + time) * 40 - x * 0.02;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
+      // Multiple trend lines spread across different vertical positions
+      const trendLines = [
+        { baseY: 100, color: 'rgba(74, 222, 128, 0.3)', speed: 0.2, amplitude: 30 },
+        { baseY: viewportHeight * 0.3, color: 'rgba(96, 165, 250, 0.25)', speed: 0.4, amplitude: 50 },
+        { baseY: viewportHeight * 0.6, color: 'rgba(168, 85, 247, 0.25)', speed: 0.3, amplitude: 40 },
+        { baseY: viewportHeight * 0.9, color: 'rgba(245, 158, 11, 0.25)', speed: 0.5, amplitude: 60 },
+        { baseY: viewportHeight * 1.2, color: 'rgba(34, 197, 94, 0.2)', speed: 0.6, amplitude: 45 },
+        { baseY: viewportHeight * 1.5, color: 'rgba(139, 92, 246, 0.2)', speed: 0.4, amplitude: 55 }
+      ];
 
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(96, 165, 250, 0.25)';
-      ctx.lineWidth = 2;
-      const line2Y = canvas.height * 0.5 - (scrollY * 0.5);
-      ctx.moveTo(-30, line2Y);
-      for (let x = 0; x < canvas.width + 30; x += 12) {
-        const y = line2Y + Math.cos(x * 0.01 + time * 1.2) * 80;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(168, 85, 247, 0.25)';
-      ctx.lineWidth = 2;
-      const line3Y = canvas.height * 0.8 - (scrollY * 0.4);
-      ctx.moveTo(-20, line3Y);
-      for (let x = 0; x < canvas.width + 20; x += 10) {
-        const y = line3Y + Math.sin(x * 0.015 + time * 0.8) * 60;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
+      trendLines.forEach((line, index) => {
+        const parallaxY = line.baseY - (scrollY * line.speed);
+        
+        // Only draw if line is in or near viewport
+        if (parallaxY > -200 && parallaxY < viewportHeight + 200) {
+          ctx.beginPath();
+          ctx.strokeStyle = line.color;
+          ctx.lineWidth = index === 0 ? 3 : 2;
+          ctx.moveTo(-50, parallaxY);
+          
+          for (let x = 0; x < canvas.width + 50; x += 15) {
+            const y = parallaxY + Math.sin(x * 0.01 + time * (0.5 + index * 0.2)) * line.amplitude;
+            ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      });
     };
 
     const drawRipples = (ctx) => {
@@ -260,27 +255,33 @@ const Background = () => {
 
     const drawProminentFinanceIndicators = (ctx, canvas, time) => {
       const scrollY = scrollYRef.current;
+      const viewportHeight = canvas.height;
       
-      // Indicators at different scroll positions with parallax
+      // Indicators spread across different vertical positions
       const indicators = [
-        { text: '+24.8%', baseY: 150, color: 'rgba(74, 222, 128, 0.8)', speed: 0.3 },
-        { text: '+18.3%', baseY: 400, color: 'rgba(96, 165, 250, 0.8)', speed: 0.5 },
-        { text: '+32.1%', baseY: canvas.height * 0.6, color: 'rgba(168, 85, 247, 0.8)', speed: 0.7 },
-        { text: '+45.2%', baseY: canvas.height * 0.8, color: 'rgba(245, 158, 11, 0.8)', speed: 0.6 }
+        { text: '+24.8%', baseY: 80, color: 'rgba(74, 222, 128, 0.8)', speed: 0.2 },
+        { text: '+18.3%', baseY: 350, color: 'rgba(96, 165, 250, 0.8)', speed: 0.4 },
+        { text: '+32.1%', baseY: viewportHeight * 0.4, color: 'rgba(168, 85, 247, 0.8)', speed: 0.5 },
+        { text: '+45.2%', baseY: viewportHeight * 0.7, color: 'rgba(245, 158, 11, 0.8)', speed: 0.6 },
+        { text: '+28.7%', baseY: viewportHeight * 1.1, color: 'rgba(34, 197, 94, 0.8)', speed: 0.3 },
+        { text: '+51.9%', baseY: viewportHeight * 1.4, color: 'rgba(139, 92, 246, 0.8)', speed: 0.7 },
+        { text: '+36.4%', baseY: viewportHeight * 1.8, color: 'rgba(239, 68, 68, 0.8)', speed: 0.4 },
+        { text: '+42.6%', baseY: viewportHeight * 2.1, color: 'rgba(14, 165, 233, 0.8)', speed: 0.5 }
       ];
 
       indicators.forEach((indicator, index) => {
-        const x = (canvas.width / (indicators.length + 1)) * (index + 1);
         // Apply parallax effect based on scroll
         const parallaxY = indicator.baseY - (scrollY * indicator.speed);
-        const waveY = parallaxY + Math.sin(time * 2 + index) * 30;
+        const waveY = parallaxY + Math.sin(time * 2 + index) * 25;
         
         // Only draw if element is in or near viewport
-        if (waveY > -100 && waveY < canvas.height + 100) {
+        if (waveY > -100 && waveY < viewportHeight + 100) {
+          const x = (canvas.width / (indicators.length + 1)) * (index + 1);
+          
           ctx.save();
           ctx.globalAlpha = 0.7 + Math.sin(time * 3 + index) * 0.3;
           ctx.fillStyle = indicator.color;
-          ctx.font = 'bold 22px Arial';
+          ctx.font = 'bold 20px Arial';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(indicator.text, x, waveY);
@@ -288,31 +289,76 @@ const Background = () => {
         }
       });
 
-      // Bar charts with parallax
+      // Bar charts spread across different vertical positions
       const barCharts = [
-        { baseY: 250, count: 6, color: 'rgba(74, 222, 128, 0.6)', speed: 0.4 },
-        { baseY: canvas.height * 0.4, count: 5, color: 'rgba(96, 165, 250, 0.6)', speed: 0.6 },
-        { baseY: canvas.height * 0.7, count: 4, color: 'rgba(168, 85, 247, 0.6)', speed: 0.5 }
+        { baseY: 200, count: 5, color: 'rgba(74, 222, 128, 0.6)', speed: 0.3 },
+        { baseY: viewportHeight * 0.35, count: 4, color: 'rgba(96, 165, 250, 0.6)', speed: 0.5 },
+        { baseY: viewportHeight * 0.65, count: 6, color: 'rgba(168, 85, 247, 0.6)', speed: 0.4 },
+        { baseY: viewportHeight * 1.0, count: 5, color: 'rgba(245, 158, 11, 0.6)', speed: 0.6 },
+        { baseY: viewportHeight * 1.3, count: 4, color: 'rgba(34, 197, 94, 0.6)', speed: 0.4 },
+        { baseY: viewportHeight * 1.7, count: 6, color: 'rgba(139, 92, 246, 0.6)', speed: 0.5 }
       ];
 
       barCharts.forEach((chart, chartIndex) => {
         const parallaxY = chart.baseY - (scrollY * chart.speed);
         
         // Only draw if chart is in or near viewport
-        if (parallaxY > -200 && parallaxY < canvas.height + 200) {
+        if (parallaxY > -200 && parallaxY < viewportHeight + 200) {
+          const startX = 50 + (chartIndex % 2) * (canvas.width / 2);
+          
           for (let i = 0; i < chart.count; i++) {
-            const x = 100 + i * 120;
-            const height = 50 + Math.sin(time + i + chartIndex) * 35;
-            const isPositive = i % 4 !== 0;
+            const x = startX + i * 80;
+            const height = 40 + Math.sin(time + i + chartIndex) * 25;
+            const isPositive = Math.sin(time * 0.5 + i + chartIndex) > 0;
             
             ctx.fillStyle = isPositive ? chart.color : 'rgba(248, 113, 113, 0.6)';
-            ctx.fillRect(x, parallaxY - height, 40, height);
+            ctx.fillRect(x, parallaxY - height, 30, height);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = '11px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText(`${Math.round(height)}%`, x + 20, parallaxY - height - 10);
+            // Only show percentage text for larger bars to avoid clutter
+            if (height > 50) {
+              ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+              ctx.font = '10px Arial';
+              ctx.textAlign = 'center';
+              ctx.fillText(`${Math.round(height)}%`, x + 15, parallaxY - height - 8);
+            }
           }
+        }
+      });
+
+      // Additional financial elements - pie chart indicators
+      const pieCharts = [
+        { baseY: viewportHeight * 0.2, speed: 0.4, size: 40 },
+        { baseY: viewportHeight * 0.5, speed: 0.6, size: 35 },
+        { baseY: viewportHeight * 0.8, speed: 0.3, size: 45 },
+        { baseY: viewportHeight * 1.2, speed: 0.5, size: 38 },
+        { baseY: viewportHeight * 1.6, speed: 0.4, size: 42 }
+      ];
+
+      pieCharts.forEach((pie, index) => {
+        const parallaxY = pie.baseY - (scrollY * pie.speed);
+        
+        if (parallaxY > -100 && parallaxY < viewportHeight + 100) {
+          const x = canvas.width * 0.8 + Math.sin(time + index) * 50;
+          
+          ctx.save();
+          ctx.globalAlpha = 0.6;
+          
+          // Draw pie chart segments
+          const segments = 4;
+          for (let i = 0; i < segments; i++) {
+            const startAngle = (i / segments) * Math.PI * 2;
+            const endAngle = ((i + 1) / segments) * Math.PI * 2;
+            const segmentColors = ['rgba(74, 222, 128, 0.7)', 'rgba(96, 165, 250, 0.7)', 'rgba(168, 85, 247, 0.7)', 'rgba(245, 158, 11, 0.7)'];
+            
+            ctx.beginPath();
+            ctx.moveTo(x, parallaxY);
+            ctx.arc(x, parallaxY, pie.size, startAngle, endAngle);
+            ctx.closePath();
+            ctx.fillStyle = segmentColors[i];
+            ctx.fill();
+          }
+          
+          ctx.restore();
         }
       });
     };
