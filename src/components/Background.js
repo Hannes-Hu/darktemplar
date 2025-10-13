@@ -8,8 +8,6 @@ const Background = () => {
   const mouseRef = useRef({ x: 0, y: 0, isMoving: false });
   const interactionZonesRef = useRef([]);
   const scrollYRef = useRef(0);
-  const ripplesRef = useRef([]);
-  const explosionsRef = useRef([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,7 +19,7 @@ const Background = () => {
     const resizeCanvas = () => {
       const totalHeight = document.documentElement.scrollHeight;
       canvas.width = window.innerWidth;
-      canvas.height = totalHeight; // Make canvas match the full page height
+      canvas.height = totalHeight;
       createInteractionZones();
     };
     
@@ -163,114 +161,11 @@ const Background = () => {
       });
     };
 
-    const handleMouseClick = (event) => {
-      const absoluteY = event.clientY + scrollYRef.current;
-      
-      let clickedZone = false;
-      interactionZonesRef.current.forEach(zone => {
-        const zoneViewportY = zone.y - scrollYRef.current;
-        const isClicking = 
-          event.clientX > zone.x && 
-          event.clientX < zone.x + zone.width &&
-          event.clientY > zoneViewportY && 
-          event.clientY < zoneViewportY + zone.height;
-        
-        if (isClicking) {
-          clickedZone = true;
-          createRipple(event.clientX, event.clientY, zone.type);
-          createExplosion(event.clientX, event.clientY, zone.type);
-        }
-      });
-
-      if (!clickedZone) {
-        createRipple(event.clientX, event.clientY, 'background');
-        createExplosion(event.clientX, event.clientY, 'background');
-        createParticleBurst(event.clientX, event.clientY);
-      }
-    };
-
     const handleMouseLeave = () => {
       mouseRef.current.isMoving = false;
       interactionZonesRef.current.forEach(zone => {
         zone.hover = false;
       });
-    };
-
-    // Ripple effect for clicks
-    const createRipple = (x, y, type) => {
-      ripplesRef.current.push({
-        x, y,
-        radius: 0,
-        maxRadius: 120,
-        color: getRippleColor(type),
-        active: true,
-        life: 1
-      });
-    };
-
-    // Explosion effect for clicks
-    const createExplosion = (x, y, type) => {
-      const particleCount = 8;
-      for (let i = 0; i < particleCount; i++) {
-        const angle = (i / particleCount) * Math.PI * 2;
-        const speed = 2 + Math.random() * 3;
-        
-        explosionsRef.current.push({
-          x, y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          size: 3 + Math.random() * 4,
-          color: getExplosionColor(type),
-          life: 1,
-          decay: 0.02 + Math.random() * 0.02
-        });
-      }
-    };
-
-    // Particle burst for background clicks
-    const createParticleBurst = (x, y) => {
-      const burstCount = 12;
-      for (let i = 0; i < burstCount; i++) {
-        const angle = (i / burstCount) * Math.PI * 2;
-        const speed = 1 + Math.random() * 2;
-        
-        particlesRef.current.push({
-          x: x,
-          y: y + scrollYRef.current,
-          size: 2 + Math.random() * 3,
-          speedX: Math.cos(angle) * speed,
-          speedY: Math.sin(angle) * speed,
-          color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)`,
-          type: 'burst',
-          pulse: Math.random() * Math.PI * 2,
-          life: 1,
-          decay: 0.01
-        });
-      }
-    };
-
-    const getRippleColor = (type) => {
-      switch(type) {
-        case 'growth-chart': return 'rgba(74, 222, 128, 0.4)';
-        case 'metrics': return 'rgba(96, 165, 250, 0.4)';
-        case 'analytics': return 'rgba(168, 85, 247, 0.4)';
-        case 'performance': return 'rgba(245, 158, 11, 0.4)';
-        case 'revenue': return 'rgba(34, 197, 94, 0.4)';
-        case 'growth': return 'rgba(139, 92, 246, 0.4)';
-        default: return 'rgba(255, 255, 255, 0.3)';
-      }
-    };
-
-    const getExplosionColor = (type) => {
-      switch(type) {
-        case 'growth-chart': return 'rgba(74, 222, 128, 0.8)';
-        case 'metrics': return 'rgba(96, 165, 250, 0.8)';
-        case 'analytics': return 'rgba(168, 85, 247, 0.8)';
-        case 'performance': return 'rgba(245, 158, 11, 0.8)';
-        case 'revenue': return 'rgba(34, 197, 94, 0.8)';
-        case 'growth': return 'rgba(139, 92, 246, 0.8)';
-        default: return `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.8)`;
-      }
     };
 
     // Drawing functions
@@ -372,50 +267,6 @@ const Background = () => {
       }
     };
 
-    const drawRipples = (ctx) => {
-      for (let i = ripplesRef.current.length - 1; i >= 0; i--) {
-        const ripple = ripplesRef.current[i];
-        ripple.radius += 8;
-        ripple.life -= 0.02;
-        
-        if (ripple.radius > ripple.maxRadius || ripple.life <= 0) {
-          ripplesRef.current.splice(i, 1);
-          continue;
-        }
-        
-        ctx.save();
-        ctx.globalAlpha = ripple.life;
-        ctx.beginPath();
-        ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = ripple.color;
-        ctx.lineWidth = 3;
-        ctx.stroke();
-        ctx.restore();
-      }
-    };
-
-    const drawExplosions = (ctx) => {
-      for (let i = explosionsRef.current.length - 1; i >= 0; i--) {
-        const explosion = explosionsRef.current[i];
-        explosion.x += explosion.vx;
-        explosion.y += explosion.vy;
-        explosion.life -= explosion.decay;
-        
-        if (explosion.life <= 0) {
-          explosionsRef.current.splice(i, 1);
-          continue;
-        }
-        
-        ctx.save();
-        ctx.globalAlpha = explosion.life;
-        ctx.fillStyle = explosion.color;
-        ctx.beginPath();
-        ctx.arc(explosion.x, explosion.y, explosion.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    };
-
     const drawProminentFinanceIndicators = (ctx, canvas, time) => {
       // Indicators at different scroll positions
       const indicators = [
@@ -504,7 +355,7 @@ const Background = () => {
           }
         }
 
-        if (particle.type !== 'data' && particle.type !== 'burst') {
+        if (particle.type !== 'data') {
           particle.x += particle.speedX;
           particle.y += particle.speedY;
 
@@ -514,18 +365,7 @@ const Background = () => {
           if (particle.y > canvas.height + particle.size) particle.y = -particle.size;
         }
 
-        if (particle.type === 'burst') {
-          particle.life -= particle.decay;
-          if (particle.life <= 0) {
-            particlesRef.current.splice(index, 1);
-            return;
-          }
-        }
-
         ctx.save();
-        if (particle.type === 'burst') {
-          ctx.globalAlpha = particle.life;
-        }
         
         if (particle.type === 'currency') {
           ctx.font = `${particle.size * 4 * pulseScale}px Arial`;
@@ -538,7 +378,7 @@ const Background = () => {
           ctx.shadowBlur = 10 * pulseScale;
           ctx.fillStyle = particle.color;
           
-          if (particle.type === 'data' || particle.type === 'burst') {
+          if (particle.type === 'data') {
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.size * pulseScale, 0, Math.PI * 2);
             ctx.fill();
@@ -554,9 +394,6 @@ const Background = () => {
         
         ctx.restore();
       });
-
-      drawRipples(ctx);
-      drawExplosions(ctx);
       
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -569,7 +406,6 @@ const Background = () => {
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('click', handleMouseClick);
     window.addEventListener('mouseleave', handleMouseLeave);
 
     animate();
@@ -579,7 +415,6 @@ const Background = () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('click', handleMouseClick);
       window.removeEventListener('mouseleave', handleMouseLeave);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
