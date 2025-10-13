@@ -43,7 +43,7 @@ main {
 
 /* About Section */
 .about-section {
-  background: rgba(255, 255, 255, 0.75) !important;
+  background: transparent !important;
   backdrop-filter: blur(20px) saturate(160%);
   border-radius: 20px;
   margin: 2rem auto;
@@ -1076,4 +1076,5 @@ section {
     padding: 2rem 0 !important;
   }
 }
+
 
