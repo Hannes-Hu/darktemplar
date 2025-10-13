@@ -25,7 +25,7 @@ const Hero = () => {
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={handleDownloadCV}>
               <FaDownload className="btn-icon" />
-              Lebenslauf downloaden
+              Lebenslauf herunterladen
             </button>
             <div className="social-links">
               <a href={`mailto:${cvData.personal.email}`} aria-label="Email">
@@ -54,6 +54,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
 
 
 
