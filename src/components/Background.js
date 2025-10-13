@@ -180,14 +180,31 @@ const Background = () => {
       const scrollY = scrollYRef.current;
       const viewportHeight = canvas.height;
       
-      // Multiple trend lines spread across different vertical positions
+      // Multiple trend lines spread across the ENTIRE scrollable area
       const trendLines = [
+        // Hero Section
         { baseY: 100, color: 'rgba(74, 222, 128, 0.3)', speed: 0.2, amplitude: 30 },
-        { baseY: viewportHeight * 0.3, color: 'rgba(96, 165, 250, 0.25)', speed: 0.4, amplitude: 50 },
-        { baseY: viewportHeight * 0.6, color: 'rgba(168, 85, 247, 0.25)', speed: 0.3, amplitude: 40 },
-        { baseY: viewportHeight * 0.9, color: 'rgba(245, 158, 11, 0.25)', speed: 0.5, amplitude: 60 },
-        { baseY: viewportHeight * 1.2, color: 'rgba(34, 197, 94, 0.2)', speed: 0.6, amplitude: 45 },
-        { baseY: viewportHeight * 1.5, color: 'rgba(139, 92, 246, 0.2)', speed: 0.4, amplitude: 55 }
+        { baseY: viewportHeight * 0.8, color: 'rgba(96, 165, 250, 0.25)', speed: 0.4, amplitude: 50 },
+        
+        // About Section
+        { baseY: viewportHeight * 1.5, color: 'rgba(168, 85, 247, 0.25)', speed: 0.3, amplitude: 40 },
+        { baseY: viewportHeight * 2.2, color: 'rgba(245, 158, 11, 0.25)', speed: 0.5, amplitude: 60 },
+        
+        // Experience Section
+        { baseY: viewportHeight * 2.8, color: 'rgba(34, 197, 94, 0.2)', speed: 0.6, amplitude: 45 },
+        { baseY: viewportHeight * 3.5, color: 'rgba(139, 92, 246, 0.2)', speed: 0.4, amplitude: 55 },
+        
+        // Skills Section
+        { baseY: viewportHeight * 4.2, color: 'rgba(239, 68, 68, 0.2)', speed: 0.3, amplitude: 35 },
+        { baseY: viewportHeight * 4.8, color: 'rgba(14, 165, 233, 0.2)', speed: 0.5, amplitude: 48 },
+        
+        // Voluntary Activities Section
+        { baseY: viewportHeight * 5.5, color: 'rgba(236, 72, 153, 0.2)', speed: 0.4, amplitude: 42 },
+        { baseY: viewportHeight * 6.2, color: 'rgba(20, 184, 166, 0.2)', speed: 0.6, amplitude: 38 },
+        
+        // Contact Section
+        { baseY: viewportHeight * 6.8, color: 'rgba(249, 115, 22, 0.2)', speed: 0.3, amplitude: 52 },
+        { baseY: viewportHeight * 7.5, color: 'rgba(139, 92, 246, 0.2)', speed: 0.5, amplitude: 45 }
       ];
 
       trendLines.forEach((line, index) => {
@@ -197,7 +214,7 @@ const Background = () => {
         if (parallaxY > -200 && parallaxY < viewportHeight + 200) {
           ctx.beginPath();
           ctx.strokeStyle = line.color;
-          ctx.lineWidth = index === 0 ? 3 : 2;
+          ctx.lineWidth = index % 2 === 0 ? 3 : 2;
           ctx.moveTo(-50, parallaxY);
           
           for (let x = 0; x < canvas.width + 50; x += 15) {
@@ -257,16 +274,31 @@ const Background = () => {
       const scrollY = scrollYRef.current;
       const viewportHeight = canvas.height;
       
-      // Indicators spread across different vertical positions
+      // Indicators spread across ALL sections
       const indicators = [
+        // Hero Section
         { text: '+24.8%', baseY: 80, color: 'rgba(74, 222, 128, 0.8)', speed: 0.2 },
         { text: '+18.3%', baseY: 350, color: 'rgba(96, 165, 250, 0.8)', speed: 0.4 },
-        { text: '+32.1%', baseY: viewportHeight * 0.4, color: 'rgba(168, 85, 247, 0.8)', speed: 0.5 },
-        { text: '+45.2%', baseY: viewportHeight * 0.7, color: 'rgba(245, 158, 11, 0.8)', speed: 0.6 },
-        { text: '+28.7%', baseY: viewportHeight * 1.1, color: 'rgba(34, 197, 94, 0.8)', speed: 0.3 },
-        { text: '+51.9%', baseY: viewportHeight * 1.4, color: 'rgba(139, 92, 246, 0.8)', speed: 0.7 },
-        { text: '+36.4%', baseY: viewportHeight * 1.8, color: 'rgba(239, 68, 68, 0.8)', speed: 0.4 },
-        { text: '+42.6%', baseY: viewportHeight * 2.1, color: 'rgba(14, 165, 233, 0.8)', speed: 0.5 }
+        
+        // About Section
+        { text: '+32.1%', baseY: viewportHeight * 1.3, color: 'rgba(168, 85, 247, 0.8)', speed: 0.5 },
+        { text: '+45.2%', baseY: viewportHeight * 1.8, color: 'rgba(245, 158, 11, 0.8)', speed: 0.6 },
+        
+        // Experience Section
+        { text: '+28.7%', baseY: viewportHeight * 2.5, color: 'rgba(34, 197, 94, 0.8)', speed: 0.3 },
+        { text: '+51.9%', baseY: viewportHeight * 3.1, color: 'rgba(139, 92, 246, 0.8)', speed: 0.7 },
+        
+        // Skills Section
+        { text: '+36.4%', baseY: viewportHeight * 3.8, color: 'rgba(239, 68, 68, 0.8)', speed: 0.4 },
+        { text: '+42.6%', baseY: viewportHeight * 4.4, color: 'rgba(14, 165, 233, 0.8)', speed: 0.5 },
+        
+        // Voluntary Activities Section
+        { text: '+29.8%', baseY: viewportHeight * 5.2, color: 'rgba(236, 72, 153, 0.8)', speed: 0.6 },
+        { text: '+47.3%', baseY: viewportHeight * 5.8, color: 'rgba(20, 184, 166, 0.8)', speed: 0.3 },
+        
+        // Contact Section
+        { text: '+33.5%', baseY: viewportHeight * 6.5, color: 'rgba(249, 115, 22, 0.8)', speed: 0.4 },
+        { text: '+55.1%', baseY: viewportHeight * 7.2, color: 'rgba(59, 130, 246, 0.8)', speed: 0.5 }
       ];
 
       indicators.forEach((indicator, index) => {
@@ -281,7 +313,7 @@ const Background = () => {
           ctx.save();
           ctx.globalAlpha = 0.7 + Math.sin(time * 3 + index) * 0.3;
           ctx.fillStyle = indicator.color;
-          ctx.font = 'bold 20px Arial';
+          ctx.font = 'bold 18px Arial';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(indicator.text, x, waveY);
@@ -289,14 +321,31 @@ const Background = () => {
         }
       });
 
-      // Bar charts spread across different vertical positions
+      // Bar charts spread across ALL sections
       const barCharts = [
+        // Hero Section
         { baseY: 200, count: 5, color: 'rgba(74, 222, 128, 0.6)', speed: 0.3 },
-        { baseY: viewportHeight * 0.35, count: 4, color: 'rgba(96, 165, 250, 0.6)', speed: 0.5 },
-        { baseY: viewportHeight * 0.65, count: 6, color: 'rgba(168, 85, 247, 0.6)', speed: 0.4 },
-        { baseY: viewportHeight * 1.0, count: 5, color: 'rgba(245, 158, 11, 0.6)', speed: 0.6 },
-        { baseY: viewportHeight * 1.3, count: 4, color: 'rgba(34, 197, 94, 0.6)', speed: 0.4 },
-        { baseY: viewportHeight * 1.7, count: 6, color: 'rgba(139, 92, 246, 0.6)', speed: 0.5 }
+        { baseY: viewportHeight * 0.6, count: 4, color: 'rgba(96, 165, 250, 0.6)', speed: 0.5 },
+        
+        // About Section
+        { baseY: viewportHeight * 1.4, count: 6, color: 'rgba(168, 85, 247, 0.6)', speed: 0.4 },
+        { baseY: viewportHeight * 2.0, count: 5, color: 'rgba(245, 158, 11, 0.6)', speed: 0.6 },
+        
+        // Experience Section
+        { baseY: viewportHeight * 2.7, count: 4, color: 'rgba(34, 197, 94, 0.6)', speed: 0.4 },
+        { baseY: viewportHeight * 3.3, count: 6, color: 'rgba(139, 92, 246, 0.6)', speed: 0.5 },
+        
+        // Skills Section
+        { baseY: viewportHeight * 4.0, count: 5, color: 'rgba(239, 68, 68, 0.6)', speed: 0.3 },
+        { baseY: viewportHeight * 4.6, count: 4, color: 'rgba(14, 165, 233, 0.6)', speed: 0.6 },
+        
+        // Voluntary Activities Section
+        { baseY: viewportHeight * 5.4, count: 6, color: 'rgba(236, 72, 153, 0.6)', speed: 0.4 },
+        { baseY: viewportHeight * 6.0, count: 5, color: 'rgba(20, 184, 166, 0.6)', speed: 0.5 },
+        
+        // Contact Section
+        { baseY: viewportHeight * 6.7, count: 4, color: 'rgba(249, 115, 22, 0.6)', speed: 0.3 },
+        { baseY: viewportHeight * 7.4, count: 6, color: 'rgba(59, 130, 246, 0.6)', speed: 0.4 }
       ];
 
       barCharts.forEach((chart, chartIndex) => {
@@ -305,50 +354,66 @@ const Background = () => {
         // Only draw if chart is in or near viewport
         if (parallaxY > -200 && parallaxY < viewportHeight + 200) {
           const startX = 50 + (chartIndex % 2) * (canvas.width / 2);
+          const barWidth = 25;
+          const barSpacing = 70;
           
           for (let i = 0; i < chart.count; i++) {
-            const x = startX + i * 80;
-            const height = 40 + Math.sin(time + i + chartIndex) * 25;
+            const x = startX + i * barSpacing;
+            const height = 35 + Math.sin(time + i + chartIndex) * 20;
             const isPositive = Math.sin(time * 0.5 + i + chartIndex) > 0;
             
             ctx.fillStyle = isPositive ? chart.color : 'rgba(248, 113, 113, 0.6)';
-            ctx.fillRect(x, parallaxY - height, 30, height);
+            ctx.fillRect(x, parallaxY - height, barWidth, height);
             
             // Only show percentage text for larger bars to avoid clutter
-            if (height > 50) {
+            if (height > 40) {
               ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-              ctx.font = '10px Arial';
+              ctx.font = '9px Arial';
               ctx.textAlign = 'center';
-              ctx.fillText(`${Math.round(height)}%`, x + 15, parallaxY - height - 8);
+              ctx.fillText(`${Math.round(height)}%`, x + barWidth/2, parallaxY - height - 6);
             }
           }
         }
       });
 
-      // Additional financial elements - pie chart indicators
+      // Additional financial elements - pie chart indicators spread across ALL sections
       const pieCharts = [
-        { baseY: viewportHeight * 0.2, speed: 0.4, size: 40 },
-        { baseY: viewportHeight * 0.5, speed: 0.6, size: 35 },
-        { baseY: viewportHeight * 0.8, speed: 0.3, size: 45 },
-        { baseY: viewportHeight * 1.2, speed: 0.5, size: 38 },
-        { baseY: viewportHeight * 1.6, speed: 0.4, size: 42 }
+        // About Section
+        { baseY: viewportHeight * 1.1, speed: 0.4, size: 35 },
+        { baseY: viewportHeight * 1.7, speed: 0.6, size: 30 },
+        
+        // Experience Section
+        { baseY: viewportHeight * 2.4, speed: 0.3, size: 40 },
+        { baseY: viewportHeight * 3.0, speed: 0.5, size: 32 },
+        
+        // Skills Section
+        { baseY: viewportHeight * 3.7, speed: 0.4, size: 38 },
+        { baseY: viewportHeight * 4.3, speed: 0.6, size: 34 },
+        
+        // Voluntary Activities Section
+        { baseY: viewportHeight * 5.1, speed: 0.3, size: 36 },
+        { baseY: viewportHeight * 5.7, speed: 0.5, size: 39 },
+        
+        // Contact Section
+        { baseY: viewportHeight * 6.4, speed: 0.4, size: 33 },
+        { baseY: viewportHeight * 7.1, speed: 0.6, size: 37 }
       ];
 
       pieCharts.forEach((pie, index) => {
         const parallaxY = pie.baseY - (scrollY * pie.speed);
         
         if (parallaxY > -100 && parallaxY < viewportHeight + 100) {
-          const x = canvas.width * 0.8 + Math.sin(time + index) * 50;
+          const x = canvas.width * 0.8 + Math.sin(time + index) * 40;
           
           ctx.save();
-          ctx.globalAlpha = 0.6;
+          ctx.globalAlpha = 0.5;
           
           // Draw pie chart segments
           const segments = 4;
           for (let i = 0; i < segments; i++) {
             const startAngle = (i / segments) * Math.PI * 2;
             const endAngle = ((i + 1) / segments) * Math.PI * 2;
-            const segmentColors = ['rgba(74, 222, 128, 0.7)', 'rgba(96, 165, 250, 0.7)', 'rgba(168, 85, 247, 0.7)', 'rgba(245, 158, 11, 0.7)'];
+            const segmentColors = ['rgba(74, 222, 128, 0.6)', 'rgba(96, 165, 250, 0.6)', 'rgba(168, 85, 247, 0.6)', 'rgba(245, 158, 11, 0.6)'];
             
             ctx.beginPath();
             ctx.moveTo(x, parallaxY);
