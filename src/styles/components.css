@@ -1,11 +1,12 @@
-/* Finance Background Styles */
 .background-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .finance-background {
@@ -13,10 +14,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  /* Height is set dynamically in JavaScript to match document height */
+  height: 100%;
   pointer-events: none;
 }
 
+/* Make sure your main content has enough height to scroll */
 main {
   position: relative;
   z-index: 1;
@@ -1221,6 +1223,7 @@ section {
   padding: 4rem 2rem;
   color: white;
 }
+
 
 
 
