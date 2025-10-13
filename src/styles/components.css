@@ -7,15 +7,17 @@
   height: 100%; /* This will be overridden by JavaScript */
   z-index: -1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .finance-background {
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   /* Height is set dynamically in JavaScript to match document height */
   pointer-events: none;
+  display: block;
 }
 
 .background-overlay {
@@ -1224,6 +1226,7 @@ section {
   min-height: 100vh; 
   padding: 6rem 2rem;
 }
+
 
 
 
