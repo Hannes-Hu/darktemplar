@@ -6,7 +6,7 @@ const Experience = () => {
   return (
     <section id="experience" className="experience-section">
       <div className="container">
-        <h2><FaBriefcase className="section-icon" /> Experience</h2>
+        <h2><FaBriefcase className="section-icon" /> Berufserfahrung</h2>
         <div className="experience-timeline">
           {cvData.experience.map((exp) => (
             <div key={exp.id} className="timeline-item">
@@ -30,3 +30,4 @@ const Experience = () => {
 };
 
 export default Experience;
+
