@@ -34,7 +34,7 @@ const Contact = () => {
             <h3>Let's Connect</h3>
             <p>
               I'm always open to discussing new opportunities, interesting projects, 
-              or just having a chat about technology and development.
+              or just having a chat.
             </p>
             
             <div className="contact-methods">
@@ -111,3 +111,4 @@ const Contact = () => {
 
 
 export default Contact;
+
