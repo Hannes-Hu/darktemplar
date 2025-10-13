@@ -92,7 +92,7 @@ const Contact = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder="Ihr Name"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -102,7 +102,7 @@ const Contact = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="Ihre E-Mail"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -112,7 +112,7 @@ const Contact = () => {
               <input
                 type="text"
                 name="subject"
-                placeholder="Subject"
+                placeholder="Betreff"
                 value={formData.subject}
                 onChange={handleChange}
                 required
@@ -121,7 +121,7 @@ const Contact = () => {
             <div className="form-group">
               <textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="Ihre Nachricht"
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
@@ -135,7 +135,7 @@ const Contact = () => {
               disabled={isSubmitting}
             >
               <FaPaperPlane className="btn-icon" />
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? 'Sending...' : 'Nachricht senden'}
             </button>
 
             {submitStatus === 'success' && (
@@ -157,4 +157,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
 
