@@ -687,7 +687,7 @@ main {
 .nav-links button {
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: white;
   font-weight: 500;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -1239,6 +1239,7 @@ section {
   -webkit-background-clip: initial !important;
   -webkit-text-fill-color: initial !important;
 }
+
 
 
 
