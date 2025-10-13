@@ -4,8 +4,8 @@ export const cvData = {
     title: "TBA",
     email: "alexander.holzbauer1@gmail.com",
     phone: "+43 68110542959",
-    location: "Wien, AT",
-    website: "TBA",
+    location: "Siemensstraße 30/264, 1210 Wien, AT",
+    website: "https://alexanderholzbauer.netlify.app",
   },
   about: "TBA",
   experience: [
@@ -155,6 +155,7 @@ export const cvData = {
     }
   ]
 };
+
 
 
 
