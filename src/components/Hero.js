@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="title-line">Hello, I'm</span>
+            // <span className="title-line">Hello, I'm</span>
             <span className="title-name">{cvData.personal.name}</span>
           </h1>
           <h2 className="hero-subtitle">{cvData.personal.title}</h2>
@@ -34,9 +34,6 @@ const Hero = () => {
               </a>
               <a href={`https://${cvData.personal.linkedin}`} aria-label="LinkedIn">
                 <FaLinkedin />
-              </a>
-              <a href={`https://${cvData.personal.github}`} aria-label="GitHub">
-                <FaGithub />
               </a>
             </div>
           </div>
@@ -58,3 +55,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
