@@ -51,13 +51,12 @@ const Contact = () => {
   return (
     <section id="contact" className="contact-section">
       <div className="container">
-        <h2>Get In Touch</h2>
+        <h2>Kontakt</h2>
         <div className="contact-grid">
           <div className="contact-info">
-            <h3>Let's Connect</h3>
+            <h3>Beispiel</h3>
             <p>
-              I'm always open to discussing new opportunities, interesting projects, 
-              or just having a chat about technology and development.
+              Beispielstext.
             </p>
             
             <div className="contact-methods">
@@ -141,13 +140,13 @@ const Contact = () => {
 
             {submitStatus === 'success' && (
               <div className="form-success">
-                Thank you! Your message has been sent successfully.
+                Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
               </div>
             )}
             
             {submitStatus === 'error' && (
               <div className="form-error">
-                Sorry, there was an error sending your message. Please try again or email me directly.
+                Es ist ein Fehler beim Senden Ihrer Nachricht aufgetreten. Bitte versuchen Sie es erneut oder senden Sie mir direkt eine E-Mail.
               </div>
             )}
           </form>
@@ -158,3 +157,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
