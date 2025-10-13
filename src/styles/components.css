@@ -41,16 +41,17 @@ main {
   min-height: 100vh;
 }
 
-/* About Section - COMPLETELY TRANSPARENT */
+/* About Section */
 .about-section {
   background: transparent !important;
   backdrop-filter: none;
   border-radius: 0;
-  margin: 2rem auto;
+  margin: 0 auto 2rem auto;
   border: none;
   box-shadow: none;
   position: relative;
   z-index: 1;
+  padding: 1rem 2rem 3rem 2rem;
 }
 
 /* Make About section title white */
@@ -713,13 +714,13 @@ main {
   width: 100%;
 }
 
-/* Hero Section - COMPLETELY TRANSPARENT */
+/* Hero Section*/
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 2rem 1rem 2rem;
   background: transparent;
 }
 
@@ -1210,6 +1211,7 @@ section {
   z-index: 2;
   transition: all 0.3s ease;
 }
+
 
 
 
