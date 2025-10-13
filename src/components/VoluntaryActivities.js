@@ -6,7 +6,7 @@ const VoluntaryActivities = () => {
   return (
     <section id="voluntary" className="voluntary-section">
       <div className="container">
-        <h2><FaHandsHelping className="section-icon" /> Voluntary & Honorary Activities</h2>
+        <h2><FaHandsHelping className="section-icon" /> Freiwillige / Ehrenamtliche Tätigkeiten</h2>
         <div className="activities-grid">
           {cvData.voluntaryActivities.map((activity) => (
             <div key={activity.id} className="activity-card">
@@ -35,4 +35,5 @@ const VoluntaryActivities = () => {
 };
 
 export default VoluntaryActivities;
+
 
