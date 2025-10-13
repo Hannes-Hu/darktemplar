@@ -10,6 +10,8 @@ const Background = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
     
     // Set canvas size
@@ -19,9 +21,6 @@ const Background = () => {
       createInteractionZones();
     };
     
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
     // Create interactive zones (clickable chart areas)
     const createInteractionZones = () => {
       interactionZonesRef.current = [
@@ -47,21 +46,21 @@ const Background = () => {
     // Create finance-themed particles
     const createParticles = () => {
       const particles = [];
-      const particleCount = 120; // Increased for more visibility
+      const particleCount = 120;
       
       for (let i = 0; i < particleCount; i++) {
         const type = Math.random();
         let particleConfig;
         
         if (type < 0.4) {
-          // Data points - more visible
+          // Data points
           particleConfig = {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 2, // Larger
+            size: Math.random() * 3 + 2,
             speedX: 0,
             speedY: 0,
-            color: `rgba(74, 222, 128, ${Math.random() * 0.5 + 0.3})`, // More opaque
+            color: `rgba(74, 222, 128, ${Math.random() * 0.5 + 0.3})`,
             type: 'data',
             pulse: Math.random() * Math.PI * 2
           };
@@ -97,8 +96,6 @@ const Background = () => {
       return particles;
     };
 
-    particlesRef.current = createParticles();
-
     // Mouse interactions
     const handleMouseMove = (event) => {
       mouseRef.current = {
@@ -128,7 +125,6 @@ const Background = () => {
           event.clientY < zone.y + zone.height;
         
         if (isClicking) {
-          // Create ripple effect
           createRipple(event.clientX, event.clientY, zone.type);
         }
       });
@@ -141,10 +137,6 @@ const Background = () => {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('click', handleMouseClick);
-    window.addEventListener('mouseleave', handleMouseLeave);
-
     // Ripple effect for clicks
     const ripples = [];
     const createRipple = (x, y, type) => {
@@ -155,6 +147,139 @@ const Background = () => {
         color: type === 'growth-chart' ? 'rgba(74, 222, 128, 0.3)' : 'rgba(96, 165, 250, 0.3)',
         active: true
       });
+    };
+
+    // Drawing functions
+    const drawEnhancedGrid = (ctx, canvas) => {
+      ctx.strokeStyle = 'rgba(100, 116, 139, 0.2)';
+      ctx.lineWidth = 1;
+      
+      // Vertical lines
+      for (let x = 0; x < canvas.width; x += 60) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      
+      // Horizontal lines
+      for (let y = 0; y < canvas.height; y += 60) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    };
+
+    const drawProminentTrendLines = (ctx, canvas) => {
+      const time = Date.now() * 0.001;
+      
+      // Strong upward trend (green)
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(74, 222, 128, 0.4)';
+      ctx.lineWidth = 3;
+      ctx.moveTo(-50, canvas.height * 0.6);
+      for (let x = 0; x < canvas.width + 50; x += 15) {
+        const y = canvas.height * 0.6 - Math.sin(x * 0.008 + time) * 80 - x * 0.03;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Market fluctuation line (blue)
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(96, 165, 250, 0.3)';
+      ctx.lineWidth = 2;
+      ctx.moveTo(-30, canvas.height * 0.3);
+      for (let x = 0; x < canvas.width + 30; x += 12) {
+        const y = canvas.height * 0.3 + Math.cos(x * 0.01 + time * 1.2) * 60;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    };
+
+    const drawInteractionZones = (ctx) => {
+      interactionZonesRef.current.forEach(zone => {
+        ctx.save();
+        
+        if (zone.hover) {
+          ctx.fillStyle = 'rgba(74, 222, 128, 0.1)';
+          ctx.strokeStyle = 'rgba(74, 222, 128, 0.5)';
+          ctx.lineWidth = 2;
+        } else {
+          ctx.fillStyle = 'rgba(96, 165, 250, 0.05)';
+          ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
+          ctx.lineWidth = 1;
+        }
+        
+        ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
+        ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+        
+        // Zone label
+        ctx.fillStyle = zone.hover ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.4)';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(
+          zone.type === 'growth-chart' ? 'Growth Analysis' : 'Key Metrics',
+          zone.x + zone.width / 2,
+          zone.y + zone.height / 2
+        );
+        
+        ctx.restore();
+      });
+    };
+
+    const drawRipples = (ctx) => {
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const ripple = ripples[i];
+        ripple.radius += 4;
+        
+        if (ripple.radius > ripple.maxRadius) {
+          ripples.splice(i, 1);
+          continue;
+        }
+        
+        ctx.beginPath();
+        ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = ripple.color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+    };
+
+    const drawProminentFinanceIndicators = (ctx, canvas, time) => {
+      // Large percentage indicators
+      const percentages = ['+24.8%', '+18.3%', '+32.1%', '+41.5%'];
+      percentages.forEach((percent, index) => {
+        const x = (canvas.width / (percentages.length + 1)) * (index + 1);
+        const y = canvas.height * 0.2 + Math.sin(time * 0.8 + index) * 60;
+        
+        ctx.save();
+        ctx.globalAlpha = 0.6 + Math.sin(time + index) * 0.3;
+        ctx.fillStyle = 'rgba(74, 222, 128, 0.7)';
+        ctx.font = 'bold 20px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(percent, x, y);
+        ctx.restore();
+      });
+
+      // Prominent bar chart
+      for (let i = 0; i < 6; i++) {
+        const x = 150 + i * 100;
+        const height = 40 + Math.sin(time * 1.5 + i) * 25;
+        const isPositive = i % 4 !== 0;
+        
+        ctx.fillStyle = isPositive 
+          ? 'rgba(74, 222, 128, 0.6)' 
+          : 'rgba(248, 113, 113, 0.6)';
+        ctx.fillRect(x, canvas.height - 150 - height, 40, height);
+        
+        // Bar value
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${Math.round(height)}%`, x + 20, canvas.height - 155 - height);
+      }
     };
 
     // Animation
@@ -274,140 +399,19 @@ const Background = () => {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    const drawEnhancedGrid = (ctx, canvas) => {
-      ctx.strokeStyle = 'rgba(100, 116, 139, 0.2)'; // More visible
-      ctx.lineWidth = 1;
-      
-      // Vertical lines
-      for (let x = 0; x < canvas.width; x += 60) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
-      }
-      
-      // Horizontal lines
-      for (let y = 0; y < canvas.height; y += 60) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-    };
-
-    const drawProminentTrendLines = (ctx, canvas) => {
-      const time = Date.now() * 0.001;
-      
-      // Strong upward trend (green)
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(74, 222, 128, 0.4)'; // More visible
-      ctx.lineWidth = 3;
-      ctx.moveTo(-50, canvas.height * 0.6);
-      for (let x = 0; x < canvas.width + 50; x += 15) {
-        const y = canvas.height * 0.6 - Math.sin(x * 0.008 + time) * 80 - x * 0.03;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-
-      // Market fluctuation line (blue)
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(96, 165, 250, 0.3)';
-      ctx.lineWidth = 2;
-      ctx.moveTo(-30, canvas.height * 0.3);
-      for (let x = 0; x < canvas.width + 30; x += 12) {
-        const y = canvas.height * 0.3 + Math.cos(x * 0.01 + time * 1.2) * 60;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-    };
-
-    const drawInteractionZones = (ctx) => {
-      interactionZonesRef.current.forEach(zone => {
-        ctx.save();
-        
-        if (zone.hover) {
-          ctx.fillStyle = 'rgba(74, 222, 128, 0.1)';
-          ctx.strokeStyle = 'rgba(74, 222, 128, 0.5)';
-          ctx.lineWidth = 2;
-        } else {
-          ctx.fillStyle = 'rgba(96, 165, 250, 0.05)';
-          ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
-          ctx.lineWidth = 1;
-        }
-        
-        ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
-        ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
-        
-        // Zone label
-        ctx.fillStyle = zone.hover ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.4)';
-        ctx.font = '14px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText(
-          zone.type === 'growth-chart' ? 'Growth Analysis' : 'Key Metrics',
-          zone.x + zone.width / 2,
-          zone.y + zone.height / 2
-        );
-        
-        ctx.restore();
-      });
-    };
-
-    const drawRipples = (ctx) => {
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        const ripple = ripples[i];
-        ripple.radius += 4;
-        
-        if (ripple.radius > ripple.maxRadius) {
-          ripples.splice(i, 1);
-          continue;
-        }
-        
-        ctx.beginPath();
-        ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = ripple.color;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
-    };
-
-    const drawProminentFinanceIndicators = (ctx, canvas, time) => {
-      // Large percentage indicators
-      const percentages = ['+24.8%', '+18.3%', '+32.1%', '+41.5%'];
-      percentages.forEach((percent, index) => {
-        const x = (canvas.width / (percentages.length + 1)) * (index + 1);
-        const y = canvas.height * 0.2 + Math.sin(time * 0.8 + index) * 60;
-        
-        ctx.save();
-        ctx.globalAlpha = 0.6 + Math.sin(time + index) * 0.3;
-        ctx.fillStyle = 'rgba(74, 222, 128, 0.7)';
-        ctx.font = 'bold 20px Arial';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(percent, x, y);
-        ctx.restore();
-      });
-
-      // Prominent bar chart
-      for (let i = 0; i < 6; i++) {
-        const x = 150 + i * 100;
-        const height = 40 + Math.sin(time * 1.5 + i) * 25;
-        const isPositive = i % 4 !== 0;
-        
-        ctx.fillStyle = isPositive 
-          ? 'rgba(74, 222, 128, 0.6)' 
-          : 'rgba(248, 113, 113, 0.6)';
-        ctx.fillRect(x, canvas.height - 150 - height, 40, height);
-        
-        // Bar value
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.font = '12px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText(`${Math.round(height)}%`, x + 20, canvas.height - 155 - height);
-      }
-    };
+    // Initialize
+    resizeCanvas();
+    particlesRef.current = createParticles();
+    
+    // Event listeners
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('click', handleMouseClick);
+    window.addEventListener('mouseleave', handleMouseLeave);
 
     animate();
 
+    // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
