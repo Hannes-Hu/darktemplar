@@ -657,8 +657,8 @@ main {
 }
 
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  background: none;
+  /*box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);*/
 }
 
 .nav-container {
@@ -1239,6 +1239,7 @@ section {
   -webkit-background-clip: initial !important;
   -webkit-text-fill-color: initial !important;
 }
+
 
 
 
