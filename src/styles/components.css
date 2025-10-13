@@ -1,8 +1,10 @@
+/* Finance Background Styles */
 .background-container {
-  position: absolute;
+  position: absolute; /* Changed from fixed to absolute */
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%; /* This will be overridden by the canvas height */
   z-index: -1;
   pointer-events: none;
 }
@@ -12,13 +14,8 @@
   top: 0;
   left: 0;
   width: 100%;
+  /* Height is set dynamically in JavaScript to match document height */
   pointer-events: none;
-}
-
-main {
-  position: relative;
-  z-index: 1;
-  min-height: 400vh; /* Match the background height */
 }
 
 .background-overlay {
@@ -37,6 +34,14 @@ main {
       rgba(51, 65, 85, 0.75) 100%);
   pointer-events: none;
   mix-blend-mode: overlay;
+}
+
+/* Main content area */
+main {
+  /*background: transparent;*/
+  position: relative;
+  z-index: 1;
+  /*min-height: 500vh; */
 }
 
 /* About Section */
@@ -716,15 +721,11 @@ main {
 /* Hero Section*/
 .hero-section {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
+  padding: 0 2rem 1rem 2rem;
   background: transparent;
-  color: white;
-  text-align: center;
-  overflow: hidden;
 }
 
 .hero-container {
@@ -1220,17 +1221,9 @@ section {
 .experience-section,
 .voluntary-section,
 .contact-section {
-  min-height: 100vh;
-  padding: 4rem 2rem;
+  min-height: 100vh; 
+  padding: 6rem 2rem;
 }
-
-
-
-
-
-
-
-
 
 
 
