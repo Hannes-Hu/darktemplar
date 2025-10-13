@@ -34,6 +34,11 @@ const Skills = () => {
     return category === 'Sprachen' || category === 'IT';
   };
 
+  // Check if category is Hobbies or Strengths
+  const isSimpleCategory = (category) => {
+    return category === 'Hobbies' || category === 'Stärken';
+  };
+
   return (
     <section id="skills" className="skills-section">
       <div className="container">
@@ -85,6 +90,7 @@ const Skills = () => {
 };
 
 export default Skills;
+
 
 
 
