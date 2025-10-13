@@ -119,6 +119,7 @@ main {
   display: block;
   font-weight: 600;
   color: var(--text-primary);
+  white-space: pre-line;
 }
 
 .education-section h3 {
@@ -1211,6 +1212,7 @@ section {
   z-index: 2;
   transition: all 0.3s ease;
 }
+
 
 
 
