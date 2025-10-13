@@ -32,20 +32,26 @@ const Hero = () => {
 
   // Predefined positions to prevent overlapping
   const positions = [
-    { left: '10%', top: '15%' },   // Top left
-    { left: '30%', top: '10%' },   // Top middle-left
-    { left: '50%', top: '15%' },   // Top middle-right
-    { left: '70%', top: '10%' },   // Top right
+    // Top row 
+    { left: '5%', top: '5%' },    // Far left
+    { left: '25%', top: '8%' },   // Left middle
+    { left: '45%', top: '5%' },   // Center left
+    { left: '65%', top: '8%' },   // Center right
+    { left: '85%', top: '5%' },   // Far right
     
-    { left: '15%', top: '35%' },   // Middle left
-    { left: '35%', top: '40%' },   // Middle middle-left
-    { left: '65%', top: '35%' },   // Middle middle-right
-    { left: '85%', top: '40%' },   // Middle right
+    // Middle row
+    { left: '10%', top: '35%' },  // Left
+    { left: '30%', top: '38%' },  // Left middle
+    { left: '50%', top: '35%' },  // Center
+    { left: '70%', top: '38%' },  // Right middle
+    { left: '90%', top: '35%' },  // Right
     
-    { left: '10%', top: '65%' },   // Bottom left
-    { left: '30%', top: '70%' },   // Bottom middle-left
-    { left: '50%', top: '65%' },   // Bottom middle
-    { left: '70%', top: '70%' }    // Bottom right
+    // Bottom row
+    { left: '5%', top: '65%' },   // Far left
+    { left: '25%', top: '68%' },  // Left middle
+    { left: '45%', top: '65%' },  // Center left
+    { left: '65%', top: '68%' },  // Center right
+    { left: '85%', top: '65%' },  // Far right
   ];
 
   return (
@@ -99,3 +105,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
