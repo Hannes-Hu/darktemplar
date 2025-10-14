@@ -1240,6 +1240,31 @@ section {
   -webkit-text-fill-color: initial !important;
 }
 
+/* Education Timeline Section */
+.education-timeline-section {
+  background: transparent !important;
+  backdrop-filter: none;
+  border-radius: 0;
+  margin: 2rem auto;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+}
+
+.education-timeline-section h2 {
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.education-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  white-space: pre-line;
+}
+
 
 
 
