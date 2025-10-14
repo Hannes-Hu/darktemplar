@@ -1238,7 +1238,7 @@ section {
   white-space: pre-line;
 }
 
-/* Responsive Design for Full Width About Section */
+/* Responsive Design About Section */
 @media (max-width: 768px) {
   .about-content-full {
     max-width: 100%;
@@ -1251,7 +1251,7 @@ section {
   }
   
   .info-grid-full {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
     gap: 1rem;
   }
   
