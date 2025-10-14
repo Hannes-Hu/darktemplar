@@ -26,6 +26,7 @@ const Header = () => {
       <ul className="nav-links">
         <li><button onClick={() => scrollToSection('about')}>Über mich</button></li>
         <li><button onClick={() => scrollToSection('experience')}>Berufserfahrung</button></li>
+        <li><button onClick={() => scrollToSection('education')}>Ausbildung</button></li>
         <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
         <li><button onClick={() => scrollToSection('voluntary')}>Ehrenamtliche Arbeit</button></li>
         <li><button onClick={() => scrollToSection('contact')}>Kontakt</button></li>
@@ -37,5 +38,6 @@ const Header = () => {
 
 
 export default Header;
+
 
 
