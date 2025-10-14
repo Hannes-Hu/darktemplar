@@ -47,15 +47,28 @@ main {
   background: transparent !important;
   backdrop-filter: none;
   border-radius: 0;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 1rem auto; 
   border: none;
   box-shadow: none;
   position: relative;
   z-index: 1;
-  padding: 1rem 2rem 3rem 2rem;
+  padding: 4rem 2rem 2rem 2rem; 
+  min-height: auto; 
+  display: flex;
+  align-items: center;
 }
 
-/* Full Width About Section */
+.about-section h2 {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  font-size: 2.5rem;
+  margin-bottom: 2rem; 
+  text-align: center;
+}
+
 .about-content-full {
   width: 100%;
   max-width: 1000px;
@@ -66,28 +79,22 @@ main {
   font-size: 1.1rem;
   line-height: 1.8;
   color: white;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; 
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   text-align: justify;
 }
 
 .personal-info-full {
-  margin-top: 2rem;
+  margin-top: 1.5rem; 
 }
 
 .info-grid-full {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr; /
   gap: 1.5rem;
   width: 100%;
 }
 
-/* Remove the old about-grid styles */
-.about-grid {
-  display: block;
-}
-
-/* Update existing info-item styles to be more prominent */
 .info-item {
   display: flex;
   align-items: center;
@@ -127,34 +134,7 @@ main {
   font-size: 1rem;
 }
 
-/* Make the about section text larger and more prominent */
-.about-section {
-  background: transparent !important;
-  backdrop-filter: none;
-  border-radius: 0;
-  margin: 0 auto 2rem auto;
-  border: none;
-  box-shadow: none;
-  position: relative;
-  z-index: 1;
-  padding: 6rem 2rem;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.about-section h2 {
-  color: white !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  -webkit-text-fill-color: initial !important;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-/* Skills Section - COMPLETELY TRANSPARENT */
+/* Skills Section */
 .skills-section {
   background: transparent !important;
   backdrop-filter: none;
@@ -1303,6 +1283,7 @@ section {
     line-height: 1.7;
   }
 }
+
 
 
 
