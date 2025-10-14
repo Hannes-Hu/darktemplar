@@ -405,12 +405,12 @@ main {
   display: none;
 }
 
-/* Voluntary Activities Section - COMPLETELY TRANSPARENT */
+/* Voluntary Activities Section */
 .voluntary-section {
   background: transparent !important;
   backdrop-filter: none;
   border-radius: 0;
-  margin: 2rem auto;
+  margin: 3rem auto;
   border: none;
   box-shadow: none;
   position: relative;
@@ -500,12 +500,12 @@ main {
   grid-gap: 0.5rem;
 }
 
-/* Contact Section - COMPLETELY TRANSPARENT */
+/* Contact Section */
 .contact-section {
   background: transparent !important;
   backdrop-filter: none;
   border-radius: 0;
-  margin: 2rem auto;
+  margin: 3rem auto;
   border: none;
   box-shadow: none;
   position: relative;
@@ -1343,6 +1343,7 @@ section {
   margin-bottom: 1.5rem;
   white-space: pre-line;
 }
+
 
 
 
