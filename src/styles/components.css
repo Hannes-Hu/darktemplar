@@ -42,18 +42,19 @@ main {
   position: relative;
   z-index: 1;
 }
+
 /* About Section */
 .about-section {
   background: transparent !important;
   backdrop-filter: none;
   border-radius: 0;
-  margin: 0 auto 1rem auto; 
+  margin: 0 auto 1rem auto;
   border: none;
   box-shadow: none;
   position: relative;
   z-index: 1;
-  padding: 4rem 2rem 2rem 2rem; 
-  min-height: auto; 
+  padding: 4rem 2rem 2rem 2rem;
+  min-height: auto;
   display: flex;
   align-items: center;
 }
@@ -65,7 +66,7 @@ main {
   -webkit-background-clip: initial !important;
   -webkit-text-fill-color: initial !important;
   font-size: 2.5rem;
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -79,32 +80,50 @@ main {
   font-size: 1.1rem;
   line-height: 1.8;
   color: white;
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   text-align: justify;
 }
 
 .personal-info-full {
-  margin-top: 1.5rem; 
+  margin-top: 1.5rem;
 }
 
 .info-grid-full {
   display: grid;
-  grid-template-columns: 1fr 1fr; /
-  grid-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
   width: 100%;
+}
+
+.info-grid-full > *:nth-child(odd) {
+  margin-right: 0.75rem;
+}
+
+.info-grid-full > *:nth-child(even) {
+  margin-left: 0.75rem;
+}
+
+.info-grid-full > *:nth-child(n+3) {
+  margin-top: 1.5rem;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  grid-gap: 1rem;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   min-height: 80px;
+}
+
+.info-item > * {
+  margin-right: 1rem;
+}
+
+.info-item > *:last-child {
+  margin-right: 0;
 }
 
 .info-item:hover {
@@ -132,6 +151,93 @@ main {
   color: var(--text-primary);
   white-space: pre-line;
   font-size: 1rem;
+}
+
+@media (min-width: 1200px) {
+  .about-content-full {
+    max-width: 1200px;
+  }
+  
+  .about-text-full {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+  
+  .info-grid-full > *:nth-child(odd) {
+    margin-right: 1rem;
+  }
+  
+  .info-grid-full > *:nth-child(even) {
+    margin-left: 1rem;
+  }
+  
+  .info-grid-full > *:nth-child(n+3) {
+    margin-top: 2rem;
+  }
+}
+
+/* Responsive Design for About Section */
+@media (max-width: 768px) {
+  .about-content-full {
+    max-width: 100%;
+  }
+  
+  .about-text-full {
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  
+  .info-grid-full {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-grid-full > *:nth-child(odd),
+  .info-grid-full > *:nth-child(even) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .info-grid-full > *:nth-child(n+2) {
+    margin-top: 1rem;
+  }
+  
+  .info-item {
+    padding: 1.25rem;
+    min-height: 70px;
+  }
+  
+  .about-section {
+    padding: 4rem 1rem;
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .info-item > * {
+    margin-right: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .info-item > *:last-child {
+    margin-bottom: 0;
+  }
+  
+  .about-text-full {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
 }
 
 /* Skills Section */
@@ -1236,52 +1342,6 @@ section {
   line-height: 1.7;
   margin-bottom: 1.5rem;
   white-space: pre-line;
-}
-
-/* Responsive Design About Section */
-@media (max-width: 768px) {
-  .about-content-full {
-    max-width: 100%;
-  }
-  
-  .about-text-full {
-    font-size: 1rem;
-    text-align: left;
-    margin-bottom: 2rem;
-  }
-  
-  .info-grid-full {
-    grid-template-columns: 1fr; 
-    grid-gap: 1rem;
-  }
-  
-  .info-item {
-    padding: 1.25rem;
-    min-height: 70px;
-  }
-  
-  .about-section {
-    padding: 4rem 1rem;
-  }
-  
-  .about-section h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .info-item {
-    flex-direction: column;
-    text-align: center;
-    grid-gap: 0.75rem;
-    padding: 1rem;
-  }
-  
-  .about-text-full {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
 }
 
 
