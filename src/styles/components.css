@@ -795,7 +795,7 @@ main {
 /* Hero Section*/
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: 700vh;
   display: flex;
   align-items: center;
   padding: 0 2rem 1rem 2rem;
@@ -1343,6 +1343,7 @@ section {
   margin-bottom: 1.5rem;
   white-space: pre-line;
 }
+
 
 
 
