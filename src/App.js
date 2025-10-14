@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
+import Education from './components/Education'; 
 import Skills from './components/Skills';
 import VoluntaryActivities from './components/VoluntaryActivities';
 import Contact from './components/Contact';
@@ -18,6 +19,7 @@ function App() {
         <Hero />
         <About />
         <Experience />
+        <Education /> 
         <Skills />
         <VoluntaryActivities />
         <Contact />
@@ -27,4 +29,3 @@ function App() {
 }
 
 export default App;
-
