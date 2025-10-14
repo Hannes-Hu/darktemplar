@@ -24,11 +24,11 @@ const Header = () => {
           <span>{cvData.personal.name.split(' ')[0]}</span>
         </div>
       <ul className="nav-links">
-        <li><button onClick={() => scrollToSection('about')}>About</button></li>
-        <li><button onClick={() => scrollToSection('experience')}>Experience</button></li>
+        <li><button onClick={() => scrollToSection('about')}>Über mich</button></li>
+        <li><button onClick={() => scrollToSection('experience')}>Berufserfahrung</button></li>
         <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
-        <li><button onClick={() => scrollToSection('voluntary')}>Voluntary Work</button></li>
-        <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+        <li><button onClick={() => scrollToSection('voluntary')}>Ehrenamtliche Arbeit</button></li>
+        <li><button onClick={() => scrollToSection('contact')}>Kontakt</button></li>
       </ul>
       </nav>
     </header>
@@ -37,4 +37,5 @@ const Header = () => {
 
 
 export default Header;
+
 
