@@ -47,23 +47,10 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="education-section">
-            <h3>Ausbildung</h3>
-            <div className="education-list">
-              {cvData.education.map((edu, index) => (
-                <div key={index} className="education-item">
-                  <div className="education-degree">{edu.degree}</div>
-                  <div className="education-institution">{edu.institution}</div>
-                  <div className="education-year">{edu.year}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 };
-
 
 export default About;
