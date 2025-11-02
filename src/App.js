@@ -22,10 +22,10 @@ function App() {
         <Education /> 
         <Skills />
         <VoluntaryActivities />
-        <Contact />
       </main>
     </div>
   );
 }
 
 export default App;
+
