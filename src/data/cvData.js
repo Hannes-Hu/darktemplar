@@ -7,7 +7,7 @@ export const cvData = {
     location: `Siemensstraße 30/264\n1210 Wien, AT`,
     website: "https://alexanderholzbauer.netlify.app",
   },
-  about: "TBA",
+  about: "Management beginnt bei einem selbst",
   experience: [
     {
       id: 1,
@@ -155,6 +155,7 @@ export const cvData = {
     }
   ]
 };
+
 
 
 
