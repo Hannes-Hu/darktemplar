@@ -10,9 +10,6 @@ const About = () => {
           <FaUser className="section-icon" /> Über mich
         </h2>
         <div className="about-content-full">
-          <div className="about-text-full">
-            <p>{cvData.about}</p>
-          </div>
           <div className="personal-info-full">
             <div className="info-grid-full">
               <div className="info-item">
@@ -52,3 +49,4 @@ const About = () => {
 };
 
 export default About;
+
